@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>长征知识问答</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 音乐 -->
+    <audio id="bgm" loop>
+        <source src="z.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 背景与遮罩 -->
+    <div id="background-slider"></div>
+    <div class="overlay"></div>
+
+    <!-- 1. 首页 -->
+    <div id="home-page" class="page active">
+        <div class="hero-content">
+            <h1>长征知识问答</h1>
+            <p>传承红色基因 · 弘扬长征精神</p>
+            <div class="btn-group">
+                <button class="red-btn" onclick="startPractice()">练习模式</button>
+                <button class="gold-btn" onclick="startChallenge()">闯关模式</button>
+                <button class="outline-btn" onclick="showBadges()">成就徽章</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 答题页面（练习/闯关共用） -->
+    <div id="quiz-page" class="page">
+        <div class="quiz-header">
+            <button class="back-btn" onclick="goHome()">返回首页</button>
+            <span id="quiz-title">练习模式</span>
+            <span id="quiz-progress">1 / 35</span>
+        </div>
+        <div class="quiz-container">
+            <div class="question-type" id="q-type">单选题</div>
+            <h2 id="q-text">题目加载中...</h2>
+            <div id="options-container" class="options-container">
+                <!-- 选项动态生成 -->
+            </div>
+            <div id="explanation" class="explanation hidden">
+                <strong>解析：</strong><span id="exp-text"></span>
+            </div>
+            <div class="quiz-footer" id="quiz-footer">
+                <button id="prev-btn" class="nav-btn" onclick="prevQuestion()" style="display:none;">上一题</button>
+                <button id="next-btn" class="nav-btn" onclick="nextQuestion()">下一题</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 闯关汇总页面 -->
+    <div id="result-page" class="page">
+        <div class="result-container">
+            <h2>闯关结束</h2>
+            <div class="score-board">
+                <span id="final-score">0</span> 分
+            </div>
+            <p id="result-msg"></p>
+            <button class="gold-btn" onclick="startChallenge()">再次挑战</button>
+            <button class="outline-btn" onclick="goHome()">返回首页</button>
+            <div class="summary-list" id="summary-list">
+                <!-- 题目对错汇总 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 成就徽章页面 -->
+    <div id="badge-page" class="page">
+        <div class="badge-container">
+            <h2>我的成就</h2>
+            <p>连续打卡：<span id="checkin-days">0</span> 天</p>
+            <div class="badge-grid" id="badge-grid">
+                <!-- 徽章动态生成 -->
+            </div>
+            <button class="outline-btn" onclick="goHome()">返回首页</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
